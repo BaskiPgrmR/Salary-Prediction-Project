@@ -1,1 +1,6 @@
-
+__pycache__/
+*.pkl
+*.joblib
+.ipynb_checkpoints/
+data/processed/*
+models/*
