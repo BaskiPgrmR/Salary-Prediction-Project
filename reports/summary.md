@@ -1,0 +1,53 @@
+# Final Report: Salary Prediction Project
+
+## 1. Introduction
+The purpose of this project is to predict the expected salary (CTC) of candidates using historical employee data.  
+The dataset includes candidate profiles such as education, experience, designation, and department.  
+The target variable is **Expected_CTC**.
+
+---
+
+## 2. Data Preprocessing
+- Missing values were handled as follows:  
+  - **Numeric columns**: replaced with the median.  
+  - **Categorical columns**: replaced with the mode.  
+- One-hot encoding was applied to categorical columns to make them suitable for machine learning models.
+
+---
+
+## 3. Correlation Analysis
+- The strongest positive correlation was observed between **Expected CTC** and **Current CTC** (**0.99**).  
+- Other positive correlations included:  
+  - **Total Experience (0.72)**  
+  - **Field Experience (0.68)**  
+- Negative correlations were observed with:  
+  - **Graduation Year (-0.68)**  
+  - **PhD Year (-0.63)**  
+
+---
+
+## 4. Model Performance
+The dataset was modeled using **Linear Regression** and **XGBoost**. The results are as follows:
+
+| Model              | R²     | MSE         | MAE     |
+|--------------------|--------|-------------|---------|
+| Linear Regression  | 0.9960 | 5.379e+09   | 50,421  |
+| XGBoost            | 0.9989 | 1.486e+09   | 24,302  |
+
+ **XGBoost significantly outperformed Linear Regression** in all performance metrics.
+
+---
+
+## 5. Visualizations
+- **Correlation Heatmap**: demonstrated the strong relationship between Expected CTC and Current CTC.  
+- **Salary Distribution**: showed a right-skewed distribution, with most candidates falling in lower salary bands.  
+- **Department-wise Salary Distribution**: revealed that certain departments have higher salary expectations.  
+- **Education Level Salary Boxplot**: indicated that higher education levels are associated with higher median salaries.  
+
+---
+
+## 6. Conclusion
+The **goal and objective** of this project were to build a robust model that determines the salary to be offered to an employee, reducing reliance on manual judgment and eliminating discrimination among employees with similar profiles.  
+
+Based on the results, **XGBoost** was identified as the most accurate model.  
+This model can be effectively used by HR teams for **fair salary benchmarking**, ensuring consistency and transparency in the salary determination process.
