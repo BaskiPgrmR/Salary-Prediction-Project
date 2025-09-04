@@ -1,0 +1,8 @@
+{
+  "overall_mae": 412321.3592047129,
+  "fairness": {
+    "overall_mae": 412321.36,
+    "max_gap": 2295332.43,
+    "mean_gap": 336531.25
+  }
+}

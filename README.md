@@ -4,17 +4,18 @@
 ## Introduction
 In today’s competitive environment, organizations must ensure fairness and consistency when determining employee salaries. Salary benchmarking using historical data helps reduce human bias, minimize discrimination, and bring transparency to Human Resource (HR) decision-making.
 
-This project develops a machine learning-based salary prediction system that uses employee profiles (education, experience, department, designation, etc.) to predict the expected salary. By leveraging data-driven methods, the system automates salary recommendations and supports HR professionals in making consistent and fair decisions.
+This project develops a **machine learning-based salary prediction system** that uses employee profiles (education, experience, department, designation, etc.) to predict the expected salary. By leveraging data-driven methods, the system automates salary recommendations and supports HR professionals in making consistent and fair decisions.
 
 ---
 
 ## Goal and Objective
-The objective of this project is to build a model, using historical data, that determines the salary to be offered to an employee. The intention is to minimize manual judgment in the selection process while ensuring employees with similar profiles receive fair compensation.  
+The objective of this project is to build a model, using historical data, that determines the salary to be offered to an employee. The intention is to minimize manual judgment in the selection process while ensuring employees with similar profiles receive **fair compensation**.  
 
 The project’s goal and objectives were successfully achieved:
 - A predictive model was built and trained on real-world-like historical data.  
 - The approach reduces subjective bias and improves transparency.  
 - The system is robust, interpretable, and capable of providing accurate salary recommendations.  
+- Salary bands were applied to ensure fairness and reduce extreme predictions.
 
 ---
 
@@ -74,17 +75,26 @@ Models were evaluated on:
 | Linear Regression  | 0.9960   | 6.37e+09     | 50,421    |
 | XGBoost Regressor  | 0.9989   | 1.67e+09     | 24,302    |
 
-XGBoost outperformed Linear Regression, achieving higher accuracy and lower error.  
+XGBoost outperformed Linear Regression, achieving higher accuracy and lower error.
+
+### Salary Banding & Clamping
+- Predicted salaries were **clamped to salary bands** to ensure fairness.  
+- Clamping adjusts extreme predictions to stay within acceptable ranges.  
+- Number of clamped salaries: `df_banded["band_clamped"].sum()`  
+- Group-wise clamping rates are available per Department and Role.  
 
 ---
 
 ## Visualizations
 The following plots were created to support analysis:
-- Correlation Heatmap – Feature relationships with salary  
-- Salary Distribution Plot – Distribution and skewness of Expected CTC  
-- Department Salary Barplot – Department-level salary differences  
-- Education Level Boxplot – Salary differences by education  
-- Model Comparison Plot – Comparing regression models  
+- Correlation Heatmap – Feature relationships with salary (`outputs/plots/correlation_heatmap.png`)  
+- Salary Distribution Plot – Distribution of Expected CTC (`outputs/plots/expected_salary_distribution.png`)  
+- Department Salary Barplot – Department-level salary differences (`outputs/plots/department_salary_distribution.png`)  
+- Education Level Boxplot – Salary differences by education (`outputs/plots/education_salary_distribution.png`)  
+- Model Comparison Plot – Linear Regression vs XGBoost (`outputs/plots/model_performance_comparison.png`)  
+- Predicted vs Offered Salary Scatter – Shows clamped vs unclamped predictions (`outputs/plots/salary_band_scatter.png`)  
+- Department & Role Boxplots – Distribution of offered salaries (`outputs/plots/band_boxplot_Department.png`, `outputs/plots/band_boxplot_Role.png`)  
+- Clamping Rate Plots – Groups with more adjusted salaries (`outputs/plots/clamping_rate_Department.png`, `outputs/plots/clamping_rate_Role.png`)  
 
 Plots are stored in:
 - `outputs/plots/`  
@@ -92,4 +102,8 @@ Plots are stored in:
 
 ---
 
-
+## Conclusion
+- The project builds a **robust, fair, and transparent salary prediction system**.  
+- **XGBoost** is the most accurate model.  
+- Applying **salary bands ensures fairness**, reduces manual adjustments, and provides HR teams with actionable insights.  
+- The system enables **consistent salary benchmarking** across employees with similar profiles, improving HR decision-making.
